@@ -1,0 +1,14 @@
+{
+  "name": "pp-login",
+  "version": "1.0.0",
+  "description": "Proyecto personal para sistema de logueo de usuarios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "GeraDV",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
