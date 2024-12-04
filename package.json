@@ -4,11 +4,17 @@
   "description": "Proyecto personal para sistema de logueo de usuarios",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon run src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "GeraDV",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }
