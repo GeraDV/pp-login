@@ -1,4 +1,4 @@
-const Usuario = require('../schemas/usuario.schema')
+const Usuario = require('../models/usuarios.model')
 const usuarioController = {}
 
 usuarioController.getAllUsuarios = async (req, res) => {
@@ -16,7 +16,7 @@ usuarioController.agregarUsuario = async (req, res) => {
     const usuario = await Usuario.create({nombre, email, password})
     res.status(201).json(usuario)    
   } catch (error) {
-    res.status(400).json({mensaje: "Error al crear el usuario", error})
+    res.status(400).json(error.message)
   }
 }
 

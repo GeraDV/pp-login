@@ -1,4 +1,4 @@
-const Usuario = require('../schemas/usuario.schema')
+const Usuario = require('../models/usuarios.model')
 
 const crearUsuarios = async () => {
   await Usuario.deleteMany({})
