@@ -1,4 +1,6 @@
 const Usuario = require('../models/usuarios.model')
+const bcrypt = require('bcrypt')
+
 const usuarioController = {}
 
 usuarioController.getAllUsuarios = async (req, res) => {
@@ -13,7 +15,9 @@ usuarioController.getAllUsuarios = async (req, res) => {
 usuarioController.agregarUsuario = async (req, res) => {
   const {nombre, email, password} = req.body
   try {
-    const usuario = await Usuario.create({nombre, email, password})
+    const salt = await bcrypt.genSalt(10)
+    const hashPassword = await bcrypt.hash(password, salt)
+    const usuario = await Usuario.create({nombre, email, password:hashPassword})
     res.status(201).json(usuario)    
   } catch (error) {
     res.status(400).json(error.message)

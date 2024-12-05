@@ -18,6 +18,8 @@ usuarioSchema.set("toJSON", {
     ret.id = ret._id.toString()
     delete ret.__v
     delete ret._id
+    // delete ret.password
+    // delete ret.rol
   }
 })
 
