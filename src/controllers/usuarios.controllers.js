@@ -15,13 +15,30 @@ usuarioController.getAllUsuarios = async (req, res) => {
 usuarioController.agregarUsuario = async (req, res) => {
   const {nombre, email, password} = req.body
   try {
-    const salt = await bcrypt.genSalt(10)
-    const hashPassword = await bcrypt.hash(password, salt)
+    const hashPassword = await hashearPassword(password)
     const usuario = await Usuario.create({nombre, email, password:hashPassword})
     res.status(201).json(usuario)    
   } catch (error) {
     res.status(400).json(error.message)
   }
+}
+
+usuarioController.modificarUsuario = async (req, res) => {
+  try {
+    const _id = req.params.id
+    const {email, nombre, password} = req.body
+    const hashPassword = await hashearPassword(password)
+    const usuarioActualizado = await Usuario.findOneAndUpdate({_id},{nombre, email, password: hashPassword})
+    res.status(200).json(usuarioActualizado)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+}
+
+const hashearPassword = async (password) => {  
+  const salt = await bcrypt.genSalt(10)
+  const hashedPassword = await bcrypt.hash(password, salt)
+  return hashedPassword
 }
 
 
