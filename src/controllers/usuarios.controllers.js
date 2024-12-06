@@ -28,7 +28,7 @@ usuarioController.modificarUsuario = async (req, res) => {
     const _id = req.params.id
     const {email, nombre, password} = req.body
     const hashPassword = await hashearPassword(password)
-    const usuarioActualizado = await Usuario.findOneAndUpdate({_id},{nombre, email, password: hashPassword})
+    const usuarioActualizado = await Usuario.findOneAndUpdate({_id},{nombre, email, password: hashPassword},{new:true})
     res.status(200).json(usuarioActualizado)
   } catch (error) {
     res.status(400).json({error: error.message})
