@@ -3,7 +3,7 @@ const validarRol = (rolesPermitidos) => {
     try {
       const {usuario} = req
       if(!usuario){
-        return res.status(401).json({error: "Usuario no utenticado"})
+        return res.status(401).json({error: "Usuario no autenticado"})
       }
 
       if(!rolesPermitidos.includes(usuario.rol)){
@@ -11,9 +11,9 @@ const validarRol = (rolesPermitidos) => {
       }
 
       next()
-      
+
     } catch (error) {
-      res.status(401).json({error: error.message})
+      res.status(500).json({error: "Error interno del servidor"})
     }
   }
 }
