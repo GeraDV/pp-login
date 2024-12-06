@@ -5,7 +5,7 @@ const usuarioSchema = new mongoose.Schema({
   nombre: {type: Schema.Types.String, required: [true, "El nombre es requerido"]},
   email: {type: Schema.Types.String, required: [true, "El correo es requerido"], unique: true},
   password: {type: Schema.Types.String, required: [true, "Se requiere contraseña"]},
-  rol: {type: Schema.Types.String, default:'user'}
+  rol: {type: Schema.Types.String, default:'user', enum:['user', 'admin']}
 })
 
 usuarioSchema.path('email').validate(async (correo) => {
