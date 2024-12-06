@@ -3,12 +3,22 @@ const bcrypt = require('bcrypt')
 
 const usuarioController = {}
 
-usuarioController.getAllUsuarios = async (req, res) => {
+usuarioController.getAllUsuarios = async (_, res) => {
   try {
     const usuarios = await Usuario.find({})
     res.status(200).json(usuarios)    
   } catch (error) {
     res.status(500).json({mensaje: 'Hubo un problema al obtener los usuarios', error})
+  }
+}
+
+usuarioController.getUsuarioById = async (req, res) => {
+  const _id = req.params.id
+  try {
+    const usuario = await Usuario.findById(_id)
+    res.status(200).json(usuario)
+  } catch (error) {
+    res.status(500).json({error: "Error en el servidor"})
   }
 }
 

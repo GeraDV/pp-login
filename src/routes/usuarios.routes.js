@@ -7,6 +7,12 @@ const {validarRol, validarToken, validarPermiso, validarIdUsuarios: validarIdUsu
 const routes = Router()
 
 routes.get('/usuarios', validarToken(), validarRol(['admin']), usuarioController.getAllUsuarios)
+routes.get('/usuarios/:id', 
+  validarToken(),
+  validarIdUsuario,
+  validarPermiso(),
+  usuarioController.getUsuarioById
+)
 routes.post('/usuarios', validarEsquema(usuarioSchema), usuarioController.agregarUsuario)
 routes.put('/usuarios/:id', 
   validarIdUsuario,
