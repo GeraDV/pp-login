@@ -1,7 +1,7 @@
 const Usuario = require('../models/usuarios.model')
 const {mongoose} = require('../database/mongo.db')
 
-const validarId = async (req, res, next) => {
+const validarIdUsuarios = async (req, res, next) => {
   const id = req.params.id
 
   if(!mongoose.Types.ObjectId.isValid(id)){
@@ -17,4 +17,4 @@ const validarId = async (req, res, next) => {
 }
 
 
-module.exports = {validarId}
+module.exports = validarIdUsuarios
