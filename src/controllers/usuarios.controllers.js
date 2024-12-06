@@ -49,10 +49,20 @@ usuarioController.actualizarUsuario = async (req, res) => {
 
     const usuarioActualizado = await Usuario.findOneAndUpdate({_id}, updates, {new: true})
     res.status(200).json(usuarioActualizado)
-    
+
   } catch (error) {
     res.status(400).json({error: error.message})
   }
+}
+
+usuarioController.eliminarUsuario = async (req, res) => {
+  const _id = req.params.id
+  try {
+    await Usuario.findByIdAndDelete(_id)
+    res.status(200).json({mensaje: "Usuario eliminado con éxito"})
+  } catch (error) {
+    res.status(500).json({error: "Algo salió mal en el servidor"})
+  }  
 }
 
 const hashearPassword = async (password) => {  
