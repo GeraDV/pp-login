@@ -18,7 +18,7 @@ controller.login = async (req, res) => {
       return res.status(401).json({error: "Contraseña incorrecta"})
     }
 
-    const token = jwt.sign({id: usuario._id, rol: usuario.rol}, process.env.JWT_CLAVE, {expiresIn: '6h'})
+    const token = jwt.sign({id: usuario._id, rol: usuario.rol}, process.env.JWT_CLAVE, {expiresIn: '1h'})
     return res.status(200).json({token})
 
   } catch (error) {

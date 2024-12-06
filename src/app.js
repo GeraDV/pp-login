@@ -12,6 +12,6 @@ app.use(routes)
 const PORT = process.env.PORT || 3001
 app.listen(PORT,async () => {
   await connectDB()
-  // await semillaUsuarios.crearUsuarios()
+  //await semillaUsuarios.crearUsuarios()
   console.log(`Aplicación corriendo en el puerto ${PORT}`)
 })
